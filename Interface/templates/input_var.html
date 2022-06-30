@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class = "container">
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+    <div style="min-width: 600px">
+        <br>
+    <h5>Insert the values and press "Submit" to get results. </h5>
+<form  action="{{ url_for('get_result')}}" method="POST">
+
+    {% for parameter in parameters_names %}
+        <p>
+            <div style="display: flex; justify-content: space-between;">
+            <label  for={{parameter}}>{{parameter}}</label>
+            <select class="pull right" name={{parameter}}>
+                {% for parameter_range in range(parameters_names[parameter]) %}
+                    <option value="{{parameter}}={{parameter_range}}">{{parameter_range}}</option>
+                {% endfor %}
+            </select>
+</div>
+
+        </p>
+    {% endfor %}
+
+    <p>
+        <div style="display: flex; justify-content: space-between;">
+        <label for='Method'>Method</label>
+        <select name=Method>
+            <option value=rl>Q-Learning</option>
+            <option value=action_rules>Action Rules</option>
+        </select>
+    </div>
+    </p>
+
+    <p>
+        <div style="display: flex; justify-content: space-between;">
+        <label for='Goal'>Goal</label>
+        <select name=Goal>
+            <option value=cases>Decrease cases</option>
+            <option value=deaths>Decrease deaths</option>
+        </select>
+    </div>
+    </p>
+
+	<p>
+	    <input type="submit"  class="btn btn-success" value="Submit">
+	</p>
+
+</form>
+
+    <form action="/models">
+        <input type="submit" class="btn btn-primary" value="Clear" />
+    </form>
+        <br>
+    {% if show_res == 1 %}
+    <h5>Result:</h5>
+    <h10>{{ best_rule_res[2] }}</h10>
+      <style type="text/css">
+       TABLE {
+        width: 600px;
+        border-top: 2px solid #000;
+        border-bottom: 2px solid #000;
+       }
+       TD, TH {
+        padding: 3px;
+        border-top: 1px solid #000;
+       }
+       TH {
+        text-align: left;
+        border-bottom: 1px solid #000;
+       }
+  </style>
+    <table>
+    <tr><th>Parameter</th>
+        <th>Initial state specified by a user</th>
+        <th>Closest initial state which is present in the model results</th>
+        <th>Recommended action</th></tr>
+    <tr><td>C1 School closing</td><td>{{ input[0] }}</td><td>{{ best_rule_res[0][0] }}</td><td>{{ best_rule_res[1][0] }}</td></tr>
+    <tr><td>C2 Workplace closing</td><td>{{ input[1] }}</td><td>{{ best_rule_res[0][1] }}</td><td>{{ best_rule_res[1][1] }}</td></tr>
+    <tr><td>C3 Cancel public events</td><td>{{ input[2] }}</td><td>{{ best_rule_res[0][2] }}</td><td>{{ best_rule_res[1][2] }}</td></tr>
+    <tr><td>C4 Restrictions on gatherings</td><td>{{ input[3] }}</td><td>{{ best_rule_res[0][3] }}</td><td>{{ best_rule_res[1][3] }}</td></tr>
+    <tr><td>C5 Close public transport</td><td>{{ input[4] }}</td><td>{{ best_rule_res[0][4] }}</td><td>{{ best_rule_res[1][4] }}</td></tr>
+    <tr><td>C6 Stay at home requirements</td><td>{{ input[5] }}</td><td>{{ best_rule_res[0][5] }}</td><td>{{ best_rule_res[1][5] }}</td></tr>
+    <tr><td>C7 Restrictions on internal movement</td><td>{{ input[6] }}</td><td>{{ best_rule_res[0][6] }}</td><td>{{ best_rule_res[1][6] }}</td></tr>
+    <tr><td>C8 International travel controls</td><td>{{ input[7] }}</td><td>{{ best_rule_res[0][7] }}</td><td>{{ best_rule_res[1][7] }}</td></tr>
+    <tr><td>H1 Public information campaigns</td><td>{{ input[8] }}</td><td>{{ best_rule_res[0][8] }}</td><td>{{ best_rule_res[1][8] }}</td></tr>
+    </table>
+    {% endif %}
+    </div>
+        </div>
+    <div class="col"></div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row" >
+    <div class="col"></div>
+    <div class="col">
+	<div style="min-width: 600px">
+		<b>This tool allows interacting with models built on the basis of the <a href="https://www.bsg.ox.ac.uk/research/research-projects/covid-19-government-response-tracker" >Covid-19 Government Response Tracker</a>.<br>
+		The main goal of the models is to predict the best next course of action to fight Covid-19 based on historical data.<br>
+		To start, select the value of the initial parameters (description of parameters C1-C8, H1 is below), the model algorithm (Action Rules or Q-Learning) and the target event (decrease number of Covid-19 cases or deaths caused by it).</b>
+		<br>
+		<br>
+	<b>Description of parameters (Source: <a href="https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/codebook.md">Codebook for the Oxford Covid-19 Government Response Tracker</a> ):</b>
+		<br>
+		<dl>
+	<dt>C1 School closing</dt>
+	<dd>0 - no measures</dd>
+	<dd>1 - recommend closing or all schools open with alterations resulting in significant differences compared to non-Covid-19 operations</dd>
+	<dd>2 - require closing (only some levels or categories, eg just high school, or just public schools)</dd>
+	<dd>3 - require closing all levels</dd>
+	<dd>Blank - no data</dd>
+	<dt>C2 Workplace closing</dt>
+	<dd>0 - no measures</dd>
+	<dd>1 - recommend closing (or recommend work from home) or all businesses open with alterations resulting in significant differences compared to non-Covid-19 operation</dd>
+	<dd>2 - require closing (or work from home) for some sectors or categories of workers</dd>
+	<dd>3 - require closing (or work from home) for all-but-essential workplaces (eg grocery stores, doctors)</dd>
+	<dd>Blank - no data</dd>
+	<dt>C3 Cancel public events</dt>
+	<dd>0 - no measures</dd>
+	<dd>1 - recommend cancelling</dd>
+	<dd>2 - require cancelling</dd>
+	<dd>Blank - no data</dd>
+	<dt>C4 Restrictions on gatherings</dt>
+	<dd>0 - no restrictions</dd>
+	<dd>1 - restrictions on very large gatherings (the limit is above 1000 people)</dd>
+	<dd>2 - restrictions on gatherings between 101-1000 people</dd>
+	<dd>3 - restrictions on gatherings between 11-100 people</dd>
+	<dd>4 - restrictions on gatherings of 10 people or less</dd>
+	<dd>Blank - no data</dd>
+	<dt>C5 Close public transport</dt>
+	<dd>0 - no measures</dd>
+	<dd>1 - recommend closing (or significantly reduce volume/route/means of transport available)</dd>
+	<dd>2 - require closing (or prohibit most citizens from using it)</dd>
+	<dd>Blank - no data</dd>
+	<dt>C6 Stay at home requirements</dt>
+	<dd>0 - no measures</dd>
+	<dd>1 - recommend not leaving house</dd>
+	<dd>2 - require not leaving house with exceptions for daily exercise, grocery shopping, and 'essential' trips</dd>
+	<dd>3 - require not leaving house with minimal exceptions (eg allowed to leave once a week, or only one person can leave at a time, etc)</dd>
+	<dd>Blank - no data</dd>
+	<dt>C7 Restrictions on internal movement</dt>
+	<dd>0 - no measures</dd>
+	<dd>1 - recommend not to travel between regions/cities</dd>
+	<dd>2 - internal movement restrictions in place</dd>
+	<dd>Blank - no data</dd>
+	<dt>C8 International travel controls</dt>
+	<dd>0 - no restrictions</dd>
+	<dd>1 - screening arrivals</dd>
+	<dd>2 - quarantine arrivals from some or all regions</dd>
+	<dd>3 - ban arrivals from some regions</dd>
+	<dd>4 - ban on all regions or total border closure</dd>
+	<dd>Blank - no data</dd>
+	<dt>H1 Public information campaigns</dt>
+	<dd>0 - no Covid-19 public information campaign</dd>
+	<dd>1 - public officials urging caution about Covid-19</dd>
+	<dd>2- coordinated public information campaign (eg across traditional and social media)</dd>
+	<dd>Blank - no data</dd>
+</dl>
+
+
+    </div> </div>
+    <div class="col"></div>
+  </div>
+</div>
+
+{% endblock %}
